@@ -14,6 +14,8 @@ const ReservationForm = () => {
   });
 
   const [errors, setErrors] = useState([]);
+  const [price, setPrice] = useState(0); // Estado para almacenar el precio total
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "phone") {
@@ -23,6 +25,29 @@ const ReservationForm = () => {
     } else {
       setFormData({ ...formData, [name]: value });
     }
+
+    // Recalcular el precio cuando cambien ciertos campos
+    if (name === "roomType" || name === "adults" || name === "children") {
+      const updatedFormData = { ...formData, [name]: value };
+      calculatePrice(updatedFormData);
+    }
+  };
+
+  const calculatePrice = (data) => {
+    const basePrices = {
+      standard: 90000,
+      deluxe: 120000,
+      suite: 150000,
+    };
+
+    const roomPrice = basePrices[data.roomType] || 0;
+    const totalGuests =
+      parseInt(data.adults || 0) + parseInt(data.children || 0);
+
+    // Incremento por persona adicional
+    const extraGuestPrice = totalGuests > 2 ? (totalGuests - 2) * 20000 : 0;
+
+    setPrice(roomPrice + extraGuestPrice);
   };
 
   const validateForm = () => {
@@ -57,25 +82,23 @@ const ReservationForm = () => {
     const paymentData = {
       name: `Reserva ${formData.roomType}`,
       description: `Habitación ${formData.roomType}`,
-      invoice: `RESERVA-${Date.now()}`, // Genera un ID único basado en la marca de tiempo
-
+      invoice: `RESERVA-${Date.now()}`,
       currency: "COP",
-      amount: 200000, // Ajusta según el tipo de habitación
-      tax_base: "0", // Base imponible (si aplica)
-      tax: "0", // Impuesto (si aplica)
+      amount: price, // Usa el precio calculado dinámicamente
+      tax_base: "0",
+      tax: "0",
       country: "CO",
       lang: "es",
       external: "false",
-      extra1: formData.firstName,
-      extra2: formData.lastName,
+      extra1: formData.name,
+      extra2: formData.email,
       extra3: formData.phone,
       email_billing: formData.email,
-      name_billing: formData.firstName,
+      name_billing: formData.name,
       mobilephone_billing: formData.phone,
-      // URL de retorno
       response: "https://luxiry-hotel.vercel.app/response",
       confirmation: "https://tu-backend.com/confirmacion-pago",
-      method: "GET", // Método de respuesta
+      method: "GET",
     };
 
     // Mostrar el formulario de pago de ePayco
@@ -215,6 +238,10 @@ const ReservationForm = () => {
                 <span className="error-message">{errors.checkOut}</span>
               )}
             </div>
+          </div>
+
+          <div className="price-display">
+            <strong>Precio total: </strong>COP {price.toLocaleString()}
           </div>
 
           <button type="submit" className="submit-button">

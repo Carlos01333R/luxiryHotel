@@ -64,7 +64,7 @@ const PaymentDetails = () => {
 
   return (
     <>
-      <main className="w-full relative top-20">
+      <main className="w-full relative top-5">
         {paymentDetails && (
           <>
             <section className="w-full justify-center items-center flex flex-col gap-2 mt-5">
