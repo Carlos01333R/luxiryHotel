@@ -1,0 +1,117 @@
+/* Contenedor principal de la página de inicio */
+.home-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilo para el carrusel */
+.carousel-container {
+    width: 100%;
+    max-width: 100%; /* Asegura que el carrusel ocupe todo el ancho */
+    height: 400px; /* Puedes ajustar la altura según lo que prefieras */
+    overflow: hidden; /* Evita que las imágenes se desborden */
+}
+
+/* Estilo para las imágenes del carrusel */
+.carousel-container img {
+    width: 100%; /* Hace que la imagen ocupe todo el espacio disponible */
+    height: 100%; /* Ajusta la altura de la imagen para que ocupe todo el contenedor */
+    object-fit: cover; /* Asegura que la imagen se ajuste correctamente al contenedor */
+}
+
+/* Sección de reseñas */
+.reviews-section {
+    width: 100%;
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+/* Estilo para las reseñas */
+.reviews {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.reviews blockquote {
+    font-size: 18px;
+    font-style: italic;
+    color: #555;
+    max-width: 400px; /* Limita el ancho de las citas */
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.reviews cite {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Sección de imagen interactiva */
+.about-us-section {
+    width: 100%;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f0f0f0; /* Fondo suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    height: 400px; /* Tamaño de la imagen */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.about-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+    color: white;
+    opacity: 0; /* Ocultamos el texto al principio */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 8px;
+}
+
+.about-image:hover .about-text {
+    opacity: 1; /* Muestra el texto cuando se pasa el ratón */
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    max-width: 80%;
+    margin: 0 auto;
+}

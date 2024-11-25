@@ -1,0 +1,45 @@
+/* Contenedor del dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Estilo del botón del dropdown */
+.dropdown-button {
+  background-color: #43d0ff;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Estilo del contenido desplegable */
+.dropdown-content {
+  display: block; /* Mostrar solo cuando está abierto */
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  top: 100%; /* Aparece justo debajo del botón */
+  left: 0;
+}
+
+/* Estilo de los enlaces dentro del dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Cambia el fondo cuando pasas el mouse por encima */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
