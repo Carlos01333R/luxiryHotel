@@ -51,7 +51,7 @@ const PaymentDetails = () => {
 
   if (loading)
     return <p className="w-full text-center items-center">Cargando...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (error) return <p className="w-full text-center items-center">{error}</p>;
 
   const formattedAmount = new Intl.NumberFormat("es-CO", {
     style: "currency",
